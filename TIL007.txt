@@ -39,3 +39,12 @@ WHERE COMM IS NOT NULL
 GROUP BY DEPTNO
 HAVING (AVG(SAL) >= 1000)
 ORDER BY AVG(SAL) DESC;
+
+***
+
+-- Q1. 'JONES'의 월급보다 많은 월급을 받는 사원의 이름과 월급을 출력하자.
+
+-- STEP 01 : 'JONES'의 월급
+SELECT SAL
+FROM EMP
+WHERE ENAME = 'JONES'; -- 2975
