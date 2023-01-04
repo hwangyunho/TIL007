@@ -60,3 +60,11 @@ FROM EMP
 WHERE (SAL > (SELECT SAL
 			 FROM EMP
 			 WHERE ENAME = 'JONES'));
+
+
+-- Q1. 직업이 'SALESMAN'인 사원들과 같은 월급을 받는 사원의 이름과 월급을 출력하자.
+SELECT ENAME, SAL                        -- 메인쿼리(주 쿼리) : 서브쿼리를 조건으로 받은후 작동한다.
+FROM EMP
+WHERE SAL IN ( SELECT SAL                -- 서브쿼리(부 쿼리) : 먼저 작동해서 조건으로 들어간다.
+			   FROM EMP
+               WHERE JOB = 'SALESMAN');
