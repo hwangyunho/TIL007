@@ -126,3 +126,10 @@ WHERE EMPNO NOT IN (SELECT IFNULL(MGR,0)
 					FROM EMP); -- KING NULL 값을 리턴하게 된다
 							   -- (DATA AND DATA AND ....NULL) = ANY
 
+-- Q7. 'KING'이 직속상관인 사원의 이름과 월급을 출력하자.
+SELECT ENAME, SAL
+FROM EMP
+WHERE MGR IN (SELECT EMPNO
+			  FROM EMP
+              WHERE ENAME = 'KING');
+
