@@ -82,3 +82,10 @@ FROM EMP
 WHERE DEPTNO IN (SELECT DEPTNO
 				 FROM EMP
                  WHERE JOB = 'CLERK');
+
+-- Q4. 'CHICAGO'에서 근무하는 사원들과 같은 부서에서 근무하는 사원의 이름과 월급을 출력하자.
+SELECT ENAME, SAL
+FROM EMP
+WHERE DEPTNO = (SELECT DEPTNO
+				FROM DEPT
+                WHERE LOC = 'CHICAGO');
