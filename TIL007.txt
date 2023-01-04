@@ -3,3 +3,12 @@ SELECT JOB, SUM(SAL)
 FROM EMP
 GROUP BY JOB
 ORDER BY SUM(SAL) ASC;
+
+-- Q2. 직위별 월급을 출력하되, 직위가 MANAGER인 사원들은 제외하라. 
+    -- 그리고 그 총 월급이 5000보다 큰 직위와 총 월급만 출력하라
+SELECT JOB, SUM(SAL)
+FROM EMP
+WHERE JOB NOT IN ('MANAGER')
+GROUP BY JOB
+HAVING (SUM(SAL) > 5000)
+ORDER BY SUM(SAL) ASC;
