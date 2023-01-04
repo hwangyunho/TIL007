@@ -30,3 +30,12 @@ WHERE DEPTNO NOT IN (30)
 GROUP BY DEPTNO
 HAVING (SUM(SAL) >= 8000)
 ORDER BY SUM(SAL) DESC;
+
+-- Q5. 부서별 평균월급을 구하되 커미션이 책정된 사원만 가져오고, 
+ -- 그 평균월급이 1000달러 이상인 부서만 나오게 하고 , 평균월급이 높은 순으로 출력하라.
+SELECT DEPTNO, AVG(SAL)
+FROM EMP
+WHERE COMM IS NOT NULL
+GROUP BY DEPTNO
+HAVING (AVG(SAL) >= 1000)
+ORDER BY AVG(SAL) DESC;
