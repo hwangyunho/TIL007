@@ -169,3 +169,11 @@ WHERE SAL > ALL(SELECT SAL
 				FROM EMP
                 WHERE JOB = 'SALESMAN');
 
+-- Q11. 직업이 'SALESMAN'인 사원 중 가장 적은 월급을 받는 사원보다 더 적은 월급을 받는 사원들의 이름과 월급을 출력하자.
+-- 		(단, MIN(),MAX() 등 함수를 사용하지 않고, 연산자를 이용 할 것)
+SELECT ENAME, SAL
+FROM EMP
+WHERE SAL < ALL(SELECT SAL
+				FROM EMP
+                WHERE JOB = 'SALESMAN');
+         
