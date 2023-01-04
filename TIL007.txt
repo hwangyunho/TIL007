@@ -110,4 +110,11 @@ ALL
  <> ALL 	 모든 값들과 다르면 결과를 리턴
  */		
 
- 
+ -- Q5. 부하직원이 있는 사원의 사원번호와 이름을 출력하자. <자신이 관리자>
+SELECT *
+FROM EMP;
+             
+SELECT EMPNO, ENAME
+FROM EMP
+WHERE EMPNO IN (SELECT MGR
+				FROM EMP);     -- (DATA OR DATA OR ....NULL) = ANY
