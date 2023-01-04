@@ -75,3 +75,10 @@ FROM EMP
 WHERE SAL IN ( SELECT SAL
 			   FROM EMP
                WHERE DEPTNO = 10);
+    
+-- Q3. 직업이 CLERK인 사원과 같은 부서에서 근무하는 사원의 이름과 월급과 부서번호를 출력하자.         
+SELECT ENAME, SAL, DEPTNO
+FROM EMP
+WHERE DEPTNO IN (SELECT DEPTNO
+				 FROM EMP
+                 WHERE JOB = 'CLERK');
