@@ -133,3 +133,17 @@ WHERE MGR IN (SELECT EMPNO
 			  FROM EMP
               WHERE ENAME = 'KING');
 
+-- Q8. 20번 부서의 사원중 가장 많은 월급을 받는 사원들보다 더 많은 월급을 받는 사원들의 이름과 월급을 출력하자.
+SELECT ENAME, SAL
+FROM EMP
+WHERE SAL > (SELECT MAX(SAL)
+			 FROM EMP
+             WHERE DEPTNO = 20);
+             
+-- ANY,ALL 연산자로 변형해보자.             
+SELECT ENAME, SAL
+FROM EMP
+WHERE SAL > ALL(SELECT SAL
+			 FROM EMP
+             WHERE DEPTNO = 20);
+
