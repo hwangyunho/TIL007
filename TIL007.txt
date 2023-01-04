@@ -177,6 +177,9 @@ WHERE SAL < ALL(SELECT SAL
 				FROM EMP
                 WHERE JOB = 'SALESMAN');
 
+-- Q1. 직업이 'SALESMAN'인 사원과 같은 부서에서 근무하고
+-- AND
+-- 같은 월급을 받는 사원들의 이름, 월급, 부서번호를 출력하라.
 SELECT ENAME, SAL, DEPTNO
 FROM EMP
 WHERE SAL IN (SELECT SAL
@@ -185,4 +188,14 @@ WHERE SAL IN (SELECT SAL
 AND DEPTNO IN (SELECT DEPTNO
 			   FROM EMP
 			   WHERE JOB = 'SALESMAN');
-            
+
+-- Q2. 30번 부서 사원들과 같은 월급과 같은 커미션을 받는 사원들의 이름, 월급, 커미션을 출력하자.
+SELECT ENAME, SAL, COMM
+FROM EMP
+WHERE SAL IN (SELECT SAL
+			  FROM EMP
+              WHERE DEPTNO = 30)
+AND COMM IN (SELECT COMM
+			 FROM EMP
+             WHERE DEPTNO = 30);
+
