@@ -199,3 +199,39 @@ AND COMM IN (SELECT COMM
 			 FROM EMP
              WHERE DEPTNO = 30);
 
+-- Q1. TEST 라는 테이블을 EMP 테이블로 만들어보자. -> 테이블 제약 규칙은 오지 않는다.
+CREATE TABLE TEST
+AS
+SELECT * FROM EMP;
+
+DESC EMP;
+SELECT * FROM TEST;
+-- Q2. TEST02 라는 테이블을 EMP 테이블로 원하는 칼럼만 추려서 만들어보자. -> 테이블 제약 규칙은 오지 않는다.
+CREATE TABLE TEST02
+AS
+SELECT ENAME, EMPNO, SAL
+FROM EMP;
+
+DESC TEST02;
+SELECT * FROM TEST02;
+-- Q3. TEST03 라는 테이블을 EMP 테이블로 원하는 <컬럼과 원하는 컬럼명>으로 만들어보자. -> 테이블 제약 규칙은 오지 않는다.
+CREATE TABLE TEST03(ENAME VARCHAR(50))
+AS
+SELECT ENAME
+FROM EMP;
+
+DESC TEST03;
+SELECT * FROM TEST03;
+-- Q4. TEST04 라는 테이블을 EMP 테이블로 만들어보자. -> 테이블 제약 규칙은 오지 않는다.
+-- 'CHICAGO'에서 근무하는 사원들과 같은 부서에서 근무하는 사원의 이름과 월급으로 TEST04를 만들자.
+CREATE TABLE TEST04
+AS
+SELECT ENAME, SAL
+FROM EMP
+WHERE DEPTNO IN ( SELECT DEPTNO
+				FROM DEPT
+                WHERE LOC = 'CHICAGO');
+DESC TEST04;
+SELECT * FROM TEST04;
+
+DROP TABLE TEST,TEST02,TEST03,TEST04;
