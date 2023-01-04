@@ -1,0 +1,5 @@
+-- Q1. 각 직위별로 총 월급을 출력하되 월급이 낮은 순으로 출력하라.
+SELECT JOB, SUM(SAL)
+FROM EMP
+GROUP BY JOB
+ORDER BY SUM(SAL) ASC;
